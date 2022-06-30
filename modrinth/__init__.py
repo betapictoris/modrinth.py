@@ -121,7 +121,7 @@ class Projects:
             '''
             Shorthand for Versions.Version with no project argument
             '''
-            return Versions.Version(self, version=version)
+            return Versions.ModrinthVersion(self, version=version)
 
     class Search:
         def __init__(self, query: str, categories: list=[], versions: list=[], project_types: list=[], licenses: list=[], index: str='relevance', offset: int=0, limit: int=10, filters: str="") -> None:
@@ -210,7 +210,7 @@ class Versions:
     Versions have information about the version of a project, including the change log, downloads,
     and downloads. 
     '''
-    class Version:
+    class ModrinthVersion:
         def __init__(self, project:Projects.ModrinthProject, version:str):
             '''
             project    ==>  ModrinthProject type    ==>     The project to be getting the version of
