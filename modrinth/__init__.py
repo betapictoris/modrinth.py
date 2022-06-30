@@ -7,7 +7,6 @@ Developed by Beta Pictoris <beta@ozx.me>
 Modrinth Python API 
 '''
 
-from asyncore import read
 import requests
 
 class Authentication:
@@ -244,3 +243,25 @@ class Versions:
             self.changeLog:     str = rJSON['changelog']
             self.dependencies: list = rJSON['dependencies']
             self.changeLogURL:  str = rJSON['changelog_url']
+        
+        def getPrimaryFile(self, hash:str='sha1') -> str:
+            '''
+            Returns the primary file hash of the version.
+            '''
+            if hash not in ['sha1', 'sha512']:
+                raise ValueError("hash must be either sha1 or sha512")
+            for file in self.files:
+                if file['primary']:
+                    return file['hashes'][hash]
+            raise ValueError("No primary file found")
+        
+        def getDownload(self, hash, hashMethod:str='sha1') -> str:
+            '''
+            Returns the download link of the version.
+            '''
+            if hashMethod not in ['sha1', 'sha512']:
+                raise ValueError("hash must be either sha1 or sha512")
+            for file in self.files:
+                if file['hashes'][hashMethod] == hash:
+                    return file['url']
+            raise ValueError("No download with that hash was found")
