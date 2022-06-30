@@ -196,7 +196,7 @@ class Projects:
 
             self.hits: list   = []
             for hit in rJSON['hits']:
-                project = API.ModrinthProject(hit['project_id'])
+                project = Projects.ModrinthProject(hit['project_id'])
                 self.hits.append(project)
             self.offset: int  = rJSON['offset']
             self.limit:  int  = rJSON['limit']
