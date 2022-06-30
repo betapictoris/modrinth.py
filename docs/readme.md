@@ -49,6 +49,7 @@ Authentication is done using a GitHub token, in the request header. Modrinth.py 
  - those which modify data (such as editing a project)
  - those which access private data (such as draft projects and notifications)
 
+In the future Modrinth.py will support Modrinth's planned authentication system and, hopefully, GitHub's OAuth system.
 #### Demo
 ```python
 authedUser = modrinth.Authentication.User('ghp_xxx') # GitHub token
@@ -58,3 +59,19 @@ project = modrinth.Projects.ModrinthProject('zzz')
 project.unfollow(authedUser)
 ```
 For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
+
+## Getting project information
+### Projects (`Projects`)
+The `Projects` class is used to interact with projects. These interactions include getting a project from slug/ID, searching for projects, and (un)following a project. With more projects being planned, this class will be expanded.
+
+#### Searching for projects
+```python
+projects = modrinth.Projects.Search('mod')
+print(projects.hits[0].name) # Prints the name of the first project found
+```
+
+#### Get project from slug/ID
+```python
+project = modrinth.Projects.ModrinthProject('zzz')
+print(project.name) # Prints the name of the project
+```
