@@ -82,8 +82,8 @@ The `Versions` class is used to interact with versions. It currently can only ge
 #### Get version information
 The suggested way to get a version is through the `Project.ModrinthProject.getVersion()` shorthand, although you can also use the `Versions.ModrinthVersion` class directly.
 ```python
-project = modrinth.Projects.ModrinthProject('zzz')
-version = project.getVersion('aaa111bb')
+project = modrinth.Projects.ModrinthProject('zzz') # Get a project from slug/ID
+version = project.getVersion('aaa111bb')           # Get the version with ID 'aaa111bb'
 
 primaryFile = version.getPrimaryFile()  # Returns the hash of the primary file
 print(version.getDownload(primaryFile)) # Returns the download URL of the primary file
