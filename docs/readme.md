@@ -62,7 +62,7 @@ For more information, see: https://docs.modrinth.com/api-spec/#section/Authentic
 
 ## Getting project information
 ### Projects (`Projects`)
-The `Projects` class is used to interact with projects. These interactions include getting a project from slug/ID, searching for projects, and (un)following a project. With more projects being planned, this class will be expanded.
+The `Projects` class is used to interact with projects. These interactions include getting a project from slug/ID, searching for projects, and (un)following a project. With more projects being planned, this class will be expanded. Projects are mods and modpacks.
 
 #### Searching for projects
 ```python
