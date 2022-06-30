@@ -19,8 +19,8 @@ Interact with Modrinth's Labrinth API through Python.
  - [ ] Modify projects (PATCH requests to `/project/{id|slug}` and `/project/{id|slug}/gallery` requests)
  - [ ] Built-in function to get multiple projects at once
  - [ ] Project dependencies management
- - [ ] Get project versions
- - [ ] Get project details
+ - [x] Get project versions
+ - [x] Get project details
  - [ ] Create, modify, and delete projects (POST requests to `/version` and PATCH/DELETE to `/version/{id}`)
  - [ ] Built-in function to get multiple versions
  - [ ] Upload files to version
