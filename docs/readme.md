@@ -84,6 +84,7 @@ The suggested way to get a version is through the `Project.ModrinthProject.getVe
 ```python
 project = modrinth.Projects.ModrinthProject('zzz')
 version = project.getVersion('aaa111bb')
+
 primaryFile = version.getPrimaryFile()  # Returns the hash of the primary file
 print(version.getDownload(primaryFile)) # Returns the download URL of the primary file
 ```
