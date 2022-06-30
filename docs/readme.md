@@ -75,3 +75,15 @@ print(projects.hits[0].name) # Prints the name of the first project found
 project = modrinth.Projects.ModrinthProject('zzz')
 print(project.name) # Prints the name of the project
 ```
+
+## Getting version information
+### Versions (`Versions`)
+The `Versions` class is used to interact with versions. It currently can only get version information, such as downloads and files. 
+#### Get version information
+The suggested way to get a version is through the `Project.ModrinthProject.getVersion()` shorthand, although you can also use the `Versions.ModrinthVersion` class directly.
+```python
+project = modrinth.Projects.ModrinthProject('zzz')
+version = project.getVersion('aaa111bb')
+primaryFile = version.getPrimaryFile()  # Returns the hash of the primary file
+print(version.getDownload(primaryFile)) # Returns the download URL of the primary file
+```
