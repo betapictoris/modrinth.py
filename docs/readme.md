@@ -5,7 +5,7 @@ Interact with Modrinth's Labrinth API through Python.
 
  Service              | Version
 ----------------------|----------
- Modrinth.py version  | v0.1.0
+ Modrinth.py version  | v0.1.1
  Labrinth API version | v2.4.4
 
 *Modrinth.py works on the latest Labrinth version!*
