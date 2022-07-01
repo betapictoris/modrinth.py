@@ -9,6 +9,8 @@ Modrinth Python API
 
 import requests
 
+__version__ = '0.1.0'
+
 class Authentication:
     '''
     Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add
