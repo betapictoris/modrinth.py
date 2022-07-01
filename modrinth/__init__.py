@@ -125,6 +125,12 @@ class Projects:
             '''
             return Versions.ModrinthVersion(self, version=version)
 
+    def getProjects(ids: list) -> list:
+        '''
+        Get a list of projects, given a list of IDs.
+        '''
+        return [Projects.ModrinthProject(id) for id in ids]
+
     class Search:
         def __init__(self, query: str, categories: list=[], versions: list=[], project_types: list=[], licenses: list=[], index: str='relevance', offset: int=0, limit: int=10, filters: str="") -> None:
             '''
