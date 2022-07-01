@@ -11,7 +11,7 @@ import requests
 
 __version__ = '0.1.2'
 
-class Authentication:
+class User:
     '''
     Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add
     the token to the request header and Labrinth's documentation says that the token is required for these
@@ -22,7 +22,7 @@ class Authentication:
 
     For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
     '''
-    class User:
+    class ModrinthUser:
         def __init__(self, token: str):
             '''
             token   ==>  String   ==>  GitHub token
