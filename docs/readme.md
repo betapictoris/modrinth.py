@@ -42,6 +42,14 @@ Interact with Modrinth's Labrinth API through Python.
 
 
 ## API Documentation
+
+### Usage
+#### Through pip
+```bash
+pip install modrinth
+```
+View the project page on [GitHub](https://github.com/BetaPictoris/modrinth.py) or [pip](https://pypi.org/project/modrinth/)
+
 ### Authentication (`Authentication` and `Authentication.User`)
 Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add the token to the request header and Labrinth's documentation says that the token is required for these requests: 
 
