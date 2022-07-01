@@ -50,7 +50,7 @@ pip install modrinth
 ```
 View the project page on [GitHub](https://github.com/BetaPictoris/modrinth.py) or [pip](https://pypi.org/project/modrinth/)
 
-### User (`User` and `User.ModrinthUser`)
+### Users (`Users` and `Users.ModrinthUser`)
 Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add the token to the request header and Labrinth's documentation says that the token is required for these requests: 
 
  - those which create data (such as version creation)
@@ -60,7 +60,7 @@ Authentication is done using a GitHub token, in the request header. Modrinth.py 
 In the future Modrinth.py will support Modrinth's planned authentication system and, hopefully, GitHub's OAuth system.
 #### Demo
 ```python
-authedUser = modrinth.User.ModrinthUser('ghp_xxx') # GitHub token
+authedUser = modrinth.Users.ModrinthUser('ghp_xxx') # GitHub token
 
 # After authentication we can interact with projects, such as following and unfollowing a mod.
 project = modrinth.Projects.ModrinthProject('zzz')

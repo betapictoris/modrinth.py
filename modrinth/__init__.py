@@ -11,7 +11,7 @@ import requests
 
 __version__ = '0.1.2'
 
-class User:
+class Users:
     '''
     Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add
     the token to the request header and Labrinth's documentation says that the token is required for these
@@ -103,7 +103,7 @@ class Projects:
             # TODO: Convert this to an object
             return data
         
-        def follow(self, user: Authentication.User):
+        def follow(self, user: Users.ModrinthUser):
             '''
             Follow a project, given a user.
             '''
@@ -111,7 +111,7 @@ class Projects:
             headers = {'Authorization': user.token}
             requests.post(url, headers=headers)
         
-        def unfollow(self, user: Authentication.User):
+        def unfollow(self, user: Users.ModrinthUser):
             '''
             Unfollow a project, given a user. 
             '''
