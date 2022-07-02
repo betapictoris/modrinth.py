@@ -28,7 +28,7 @@ Interact with Modrinth's Labrinth API through Python.
  - [ ] Delete a file from its hash (DELETE requests to `/version_file`)
  - [ ] Get latest project(s) version(s)
  - [ ] Get project version from hash
- - [ ] Read user(s) data
+ - [x] Read user(s) data
  - [ ] Delete and modify user data
  - [ ] Read team data 
  - [ ] Add users to teams
