@@ -10,7 +10,7 @@ Interact with Modrinth's Labrinth API through Python.
 
 *Modrinth.py works on the latest Labrinth version!*
 
-<details><summary>**To-do**</summary>
+## To-do
  - [x] Search for projects
  - [x] (Un)follow projects
  - [x] Basic authentication
@@ -38,7 +38,7 @@ Interact with Modrinth's Labrinth API through Python.
  - [ ] Change team owner
  - [ ] Get categories, mod loaders, game versions, licenses, donation sites, and report types. ("tags")
  - [ ] Support for more branches (ie. staging)
-</details>
+
 
 
 ## API Documentation
