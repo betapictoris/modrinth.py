@@ -22,7 +22,7 @@ Interact with Modrinth's Labrinth API through Python.
  - [x] Get project versions
  - [x] Get project details
  - [ ] Create, modify, and delete projects (POST requests to `/version` and PATCH/DELETE to `/version/{id}`)
- - [ ] Built-in function to get multiple versions
+ - [x] Built-in function to get multiple versions
  - [ ] Upload files to version
  - [ ] Get a version from `sha1` or `sha512`
  - [ ] Delete a file from its hash (DELETE requests to `/version_file`)
@@ -50,23 +50,34 @@ pip install modrinth
 ```
 View the project page on [GitHub](https://github.com/BetaPictoris/modrinth.py) or [pip](https://pypi.org/project/modrinth/)
 
-### Users (`Users` and `Users.ModrinthUser`)
-Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add the token to the request header and Labrinth's documentation says that the token is required for these requests: 
+### Users (`Users`)
+User data includes their username, name, email, bio, etc. this class hold functions and objects that relate
+to authentication and user data.  
 
+Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add
+the token to the request header and Labrinth's documentation says that the token is required for these
+requests: 
  - those which create data (such as version creation)
  - those which modify data (such as editing a project)
  - those which access private data (such as draft projects and notifications)
 
-In the future Modrinth.py will support Modrinth's planned authentication system and, hopefully, GitHub's OAuth system.
-#### Demo
+For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
+
+#### User 
 ```python
-authedUser = modrinth.Users.ModrinthUser('ghp_xxx') # GitHub token
+user = modrinth.Users.ModrinthUser('yyy') # Find a user with the username/ID yyy
+
+print(user.name)  # Print the user's name
+```
+
+#### Authentication
+```python
+authedUser = modrinth.Users.AuthenticatedUser('ghp_xxx') # GitHub token
 
 # After authentication we can interact with projects, such as following and unfollowing a mod.
 project = modrinth.Projects.ModrinthProject('zzz')
 project.unfollow(authedUser)
 ```
-For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
 
 ## Getting project information
 ### Projects (`Projects`)

@@ -14,6 +14,9 @@ __version__ = '0.1.2'
 
 class Users:
     '''
+    User data includes their username, name, email, bio, etc. this class hold functions and objects that relate
+    to authentication and user data.  
+
     Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add
     the token to the request header and Labrinth's documentation says that the token is required for these
     requests: 
@@ -24,6 +27,28 @@ class Users:
     For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
     '''
     class ModrinthUser:
+        def __init__(self, user: str):
+            '''
+            user   ==>  String   ==>  Username of user ID
+            '''
+
+            url:str   = 'https://api.modrinth.com/v2/user/{id}'
+            data:dict = requests.get(url.format(id=user)).json()
+            self.url: str = url.format(id=user)
+
+            self.username: str  =  data['username']
+            self.name: str      =  data['name']
+            self.email: str     =  data['email']
+            self.bio: str       =  data['bio']
+            self.id: str        =  data['id']
+            self.githubID: int  =  data['github_id']
+            self.avatarURL: str =  data['avatar_url']
+            self.created: str   =  data['created']
+            self.role: str      =  data['role']
+
+
+
+    class AuthenticatedUser:
         def __init__(self, token: str):
             '''
             token   ==>  String   ==>  GitHub token
@@ -104,7 +129,7 @@ class Projects:
             # TODO: Convert this to an object
             return data
         
-        def follow(self, user: Users.ModrinthUser):
+        def follow(self, user: Users.AuthenticatedUser):
             '''
             Follow a project, given a user.
             '''
@@ -112,7 +137,7 @@ class Projects:
             headers = {'Authorization': user.token}
             requests.post(url, headers=headers)
         
-        def unfollow(self, user: Users.ModrinthUser):
+        def unfollow(self, user: Users.AuthenticatedUser):
             '''
             Unfollow a project, given a user. 
             '''
