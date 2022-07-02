@@ -7,6 +7,7 @@ Developed by Beta Pictoris <beta@ozx.me>
 Modrinth Python API 
 '''
 
+from distutils.version import Version
 import requests
 
 __version__ = '0.1.2'
@@ -121,9 +122,15 @@ class Projects:
         
         def getVersion(self, version):
             '''
-            Shorthand for Versions.Version with no project argument
+            Shorthand for Versions.ModrinthVersion with no project argument.
             '''
             return Versions.ModrinthVersion(self, version=version)
+        
+        def getAllVersions(self):
+            '''
+            Get Versions.getVersions() for all versions found for the project. 
+            '''
+            return Versions.getVersions(self.versions)
 
     def getProjects(ids: list) -> list:
         '''
@@ -273,3 +280,9 @@ class Versions:
                 if file['hashes'][hashMethod] == hash:
                     return file['url']
             raise ValueError("No download with that hash was found")
+    
+    def getVersions(project: Projects.ModrinthProject, ids: list) -> list:
+        '''
+        Get a list of versions, given a list of IDs.
+        '''
+        return [Versions.ModrinthVersion(project, id) for id in ids]
