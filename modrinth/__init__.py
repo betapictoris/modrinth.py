@@ -7,7 +7,6 @@ Developed by Beta Pictoris <beta@ozx.me>
 Modrinth Python API 
 '''
 
-from distutils.version import Version
 import requests
 
 __version__ = '0.1.2'
