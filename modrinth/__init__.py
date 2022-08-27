@@ -104,21 +104,27 @@ class Projects:
             '''
             if self.serverSide == 'optional' or self.serverSide == 'required':
                 return True
-        
+            else:
+                return False
+
         def isClientSide(self) -> bool:
             '''
             Check if the project is client side.
             '''
-            if self.clientSide == 'optional' or self.serverSide == 'required':
+            if self.clientSide == 'optional' or self.clientSide == 'required':
                 return True
-        
+            else:
+                return false
+
         def isUniversal(self) -> bool:
             '''
             Check if the project is both server side or client side.
             '''
             if self.serverSide in ['universal', 'required'] and self.clientSide in ['universal', 'required']:
                 return True
-        
+            else:
+                return False
+
         def getDependencies(self) -> dict:
             '''
             Get the project dependencies.
