@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "modrinth"
-version = "0.1.2"
+version = "0.1.3"
 description = " Interact with Modrinth's Labrinth API through Python."
 readme = "docs/readme.md"
 authors = [{ name = "Beta Pictoris", email = "beta@ozx.me" }]
