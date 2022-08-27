@@ -11,6 +11,7 @@ import requests
 
 __version__ = '0.1.2'
 
+
 class Users:
     '''
     User data includes their username, name, email, bio, etc. this class hold functions and objects that relate
@@ -31,21 +32,19 @@ class Users:
             user   ==>  String   ==>  Username of user ID
             '''
 
-            url:str   = 'https://api.modrinth.com/v2/user/{id}'
-            data:dict = requests.get(url.format(id=user)).json()
+            url: str = 'https://api.modrinth.com/v2/user/{id}'
+            data: dict = requests.get(url.format(id=user)).json()
             self.url: str = url.format(id=user)
 
-            self.username: str  =  data['username']
-            self.name: str      =  data['name']
-            self.email: str     =  data['email']
-            self.bio: str       =  data['bio']
-            self.id: str        =  data['id']
-            self.githubID: int  =  data['github_id']
-            self.avatarURL: str =  data['avatar_url']
-            self.created: str   =  data['created']
-            self.role: str      =  data['role']
-
-
+            self.username: str = data['username']
+            self.name: str = data['name']
+            self.email: str = data['email']
+            self.bio: str = data['bio']
+            self.id: str = data['id']
+            self.githubID: int = data['github_id']
+            self.avatarURL: str = data['avatar_url']
+            self.created: str = data['created']
+            self.role: str = data['role']
 
     class AuthenticatedUser:
         def __init__(self, token: str):
@@ -53,6 +52,7 @@ class Users:
             token   ==>  String   ==>  GitHub token
             '''
             self.token: str = token
+
 
 class Projects:
     class ModrinthProject:
@@ -64,33 +64,33 @@ class Projects:
             url: str = 'https://api.modrinth.com/v2/project/{id}'
             data: dict = requests.get(url.format(id=project)).json()
             self.url: str = url.format(id=project)
-            
-            self.id: str                 = data['id']
-            self.slug: str               = data['slug']
-            self.projectType: str        = data['project_type']
-            self.team: str               = data['team']
-            self.name: str               = data['title']
-            self.desc: str               = data['description']
-            self.body: str               = data['body']
-            self.bodyURL: str            = data['body_url']
-            self.published: str          = data['published']
-            self.updated: str            = data['updated']
-            self.status: str             = data['status']
-            self.moderatorMessage: str   = data['moderator_message']
-            self.license: dict           = data['license']
-            self.clientSide: str         = data['client_side']
-            self.serverSide: str         = data['server_side']
-            self.downloads: int          = data['downloads']
-            self.followers: int          = data['followers']
-            self.categories: list        = data['categories']
-            self.versions: list          = data['versions']
-            self.iconURL: str            = data['icon_url']
-            self.issuesURL: str          = data['issues_url']
-            self.sourceURL: str          = data['source_url']
-            self.wikiURL: int            = data['wiki_url']
-            self.discordURL: str         = data['discord_url']
-            self.donationURLs: list      = data['donation_urls']
-            self.gallery: list           = data['gallery']
+
+            self.id: str = data['id']
+            self.slug: str = data['slug']
+            self.projectType: str = data['project_type']
+            self.team: str = data['team']
+            self.name: str = data['title']
+            self.desc: str = data['description']
+            self.body: str = data['body']
+            self.bodyURL: str = data['body_url']
+            self.published: str = data['published']
+            self.updated: str = data['updated']
+            self.status: str = data['status']
+            self.moderatorMessage: str = data['moderator_message']
+            self.license: dict = data['license']
+            self.clientSide: str = data['client_side']
+            self.serverSide: str = data['server_side']
+            self.downloads: int = data['downloads']
+            self.followers: int = data['followers']
+            self.categories: list = data['categories']
+            self.versions: list = data['versions']
+            self.iconURL: str = data['icon_url']
+            self.issuesURL: str = data['issues_url']
+            self.sourceURL: str = data['source_url']
+            self.wikiURL: int = data['wiki_url']
+            self.discordURL: str = data['discord_url']
+            self.donationURLs: list = data['donation_urls']
+            self.gallery: list = data['gallery']
 
         def toDict(self) -> dict:
             '''
@@ -133,7 +133,7 @@ class Projects:
 
             # TODO: Convert this to an object
             return data
-        
+
         def follow(self, user: Users.AuthenticatedUser):
             '''
             Follow a project, given a user.
@@ -141,7 +141,7 @@ class Projects:
             url = self.url + '/follow'
             headers = {'Authorization': user.token}
             requests.post(url, headers=headers)
-        
+
         def unfollow(self, user: Users.AuthenticatedUser):
             '''
             Unfollow a project, given a user. 
@@ -149,13 +149,13 @@ class Projects:
             url = self.url + '/follow'
             headers = {'Authorization': user.token}
             requests.delete(url, headers=headers)
-        
+
         def getVersion(self, version):
             '''
             Shorthand for Versions.ModrinthVersion with no project argument.
             '''
             return Versions.ModrinthVersion(self, version=version)
-        
+
         def getAllVersions(self):
             '''
             Get Versions.getVersions() for all versions found for the project. 
@@ -169,7 +169,7 @@ class Projects:
         return [Projects.ModrinthProject(id) for id in ids]
 
     class Search:
-        def __init__(self, query: str, categories: list=[], versions: list=[], project_types: list=[], licenses: list=[], index: str='relevance', offset: int=0, limit: int=10, filters: str="") -> None:
+        def __init__(self, query: str, categories: list = [], versions: list = [], project_types: list = [], licenses: list = [], index: str = 'relevance', offset: int = 0, limit: int = 10, filters: str = "") -> None:
             '''
             query           ==>   String   ==>  The query to search for          |   Example: 'gravestones'
             categories      ==>   List     ==>  The categories to search for     |   Example: ['gravestones', 'gravestones-mod']
@@ -189,20 +189,20 @@ class Projects:
 
                 if len(categories) > 1 and category != categories[len(categories) - 1]:
                     cats += ","
-            
+
             vers: str = ""
             for version in versions:
                 ver: str = f'["versions:{version}"]'
                 vers += ver
-                
-                if len(versions) >1  and version != versions[len(versions) - 1]:
+
+                if len(versions) > 1 and version != versions[len(versions) - 1]:
                     vers += ','
-            
+
             proj_types: str = ""
             for project_type in project_types:
                 proType: str = f'["project_type:{project_type}"]'
                 proj_types += proType
-                
+
                 if len(project_types) and project_type != project_types[len(project_types) - 1]:
                     proj_types += ','
 
@@ -210,10 +210,10 @@ class Projects:
             for license in licenses:
                 lic: str = f'["license:{license}"]'
                 lics += lic
-                
+
                 if len(licenses) and license != licenses[len(licenses) - 1]:
                     lics += ','
-            
+
             facets = "["
             if cats != "":
                 facets += cats
@@ -234,21 +234,21 @@ class Projects:
             if facets != "[]":
                 facetsInURL = f'&facets={facets}'
 
-
             url: str = f'https://api.modrinth.com/v2/search?query={query}{facetsInURL}&index={index}&offset={offset}&limit={limit}&filters={filters}'
             r: requests.Response = requests.get(url)
             rJSON: dict = r.json()
 
-            self.hits: list   = []
+            self.hits: list = []
             for hit in rJSON['hits']:
                 project = Projects.ModrinthProject(hit['project_id'])
                 self.hits.append(project)
-            self.offset: int  = rJSON['offset']
-            self.limit:  int  = rJSON['limit']
-            self.total:  int  = rJSON['total_hits']
+            self.offset: int = rJSON['offset']
+            self.limit:  int = rJSON['limit']
+            self.total:  int = rJSON['total_hits']
 
         def toDict(self) -> dict:
             return {'hits': self.hits, 'offset': self.offset, 'limit': self.limit, 'total': self.total}
+
 
 class Versions:
     '''
@@ -256,7 +256,7 @@ class Versions:
     and downloads. 
     '''
     class ModrinthVersion:
-        def __init__(self, project:Projects.ModrinthProject, version:str):
+        def __init__(self, project: Projects.ModrinthProject, version: str):
             '''
             project    ==>  ModrinthProject type    ==>     The project to be getting the version of
             version    ==>  String                  ==>     The version of the project to be getting
@@ -265,8 +265,9 @@ class Versions:
             if not isinstance(project, Projects.ModrinthProject):
                 raise TypeError("project must be a ModrinthProject type")
             if version not in project.versions:
-                raise ValueError("version must be a valid version of the project")
-            
+                raise ValueError(
+                    "version must be a valid version of the project")
+
             self.project: Projects.ModrinthProject = project
             self.version: str = version
             self.url: str = f'https://api.modrinth.com/v2/version/{version}'
@@ -288,8 +289,8 @@ class Versions:
             self.changeLog:     str = rJSON['changelog']
             self.dependencies: list = rJSON['dependencies']
             self.changeLogURL:  str = rJSON['changelog_url']
-        
-        def getPrimaryFile(self, hash:str='sha1') -> str:
+
+        def getPrimaryFile(self, hash: str = 'sha1') -> str:
             '''
             Returns the primary file hash of the version.
             '''
@@ -299,8 +300,8 @@ class Versions:
                 if file['primary']:
                     return file['hashes'][hash]
             raise ValueError("No primary file found")
-        
-        def getDownload(self, hash, hashMethod:str='sha1') -> str:
+
+        def getDownload(self, hash, hashMethod: str = 'sha1') -> str:
             '''
             Returns the download link of the version.
             '''
@@ -310,7 +311,7 @@ class Versions:
                 if file['hashes'][hashMethod] == hash:
                     return file['url']
             raise ValueError("No download with that hash was found")
-    
+
     def getVersions(project: Projects.ModrinthProject, ids: list) -> list:
         '''
         Get a list of versions, given a list of IDs.
