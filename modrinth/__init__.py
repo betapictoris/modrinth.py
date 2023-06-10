@@ -150,6 +150,12 @@ class Projects:
             headers = {'Authorization': user.token}
             requests.delete(url, headers=headers)
 
+        def getLatestVersion(self):
+            '''
+            Gets the latest version for the current project.
+            '''
+            return Versions.getLatestVersion(self)
+
         def getVersion(self, version):
             '''
             Shorthand for Versions.ModrinthVersion with no project argument.
@@ -160,7 +166,7 @@ class Projects:
             '''
             Get Versions.getVersions() for all versions found for the project. 
             '''
-            return Versions.getVersions(self.versions)
+            return Versions.getVersions(self, self.versions)
 
     def getProjects(ids: list) -> list:
         '''
@@ -317,3 +323,9 @@ class Versions:
         Get a list of versions, given a list of IDs.
         '''
         return [Versions.ModrinthVersion(project, id) for id in ids]
+    
+    def getLatestVersion(project: Projects.ModrinthProject) -> ModrinthVersion:
+        '''
+        Gets the latest version, given a project.
+        '''
+        return project.getAllVersions()[-1]
