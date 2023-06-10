@@ -1,15 +1,6 @@
 # Modrinth.py
 Interact with Modrinth's Labrinth API through Python. 
 
-## API Version
-
- Service              | Version
-----------------------|----------
- Modrinth.py version  | v0.1.3
- Labrinth API version | v2.4.4
-
-*Modrinth.py works on the latest Labrinth version!*
-
 ## To-do
  - [x] Search for projects
  - [x] (Un)follow projects
@@ -26,7 +17,7 @@ Interact with Modrinth's Labrinth API through Python.
  - [ ] Upload files to version
  - [ ] Get a version from `sha1` or `sha512`
  - [ ] Delete a file from its hash (DELETE requests to `/version_file`)
- - [ ] Get latest project(s) version(s)
+ - [x] Get latest project(s) version(s)
  - [ ] Get project version from hash
  - [x] Read user(s) data
  - [ ] Delete and modify user data
