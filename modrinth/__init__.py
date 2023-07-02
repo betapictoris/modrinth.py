@@ -87,7 +87,7 @@ class Projects:
             self.iconURL: str = data['icon_url']
             self.issuesURL: str = data['issues_url']
             self.sourceURL: str = data['source_url']
-            self.wikiURL: int = data['wiki_url']
+            self.wikiURL: str = data['wiki_url']
             self.discordURL: str = data['discord_url']
             self.donationURLs: list = data['donation_urls']
             self.gallery: list = data['gallery']
