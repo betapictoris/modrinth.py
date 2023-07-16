@@ -1,36 +1,9 @@
 # Modrinth.py
 Interact with Modrinth's Labrinth API through Python. 
 
-## To-do
- - [x] Search for projects
- - [x] (Un)follow projects
- - [x] Basic authentication
- - [ ] Documentation
- - [ ] Create and delete projects
- - [ ] Modify projects (PATCH requests to `/project/{id|slug}` and `/project/{id|slug}/gallery` requests)
- - [x] Built-in function to get multiple projects at once
- - [ ] Project dependencies management
- - [x] Get project versions
- - [x] Get project details
- - [ ] Create, modify, and delete projects (POST requests to `/version` and PATCH/DELETE to `/version/{id}`)
- - [x] Built-in function to get multiple versions
- - [ ] Upload files to version
- - [ ] Get a version from `sha1` or `sha512`
- - [ ] Delete a file from its hash (DELETE requests to `/version_file`)
- - [x] Get latest project(s) version(s)
- - [ ] Get project version from hash
- - [x] Read user(s) data
- - [ ] Delete and modify user data
- - [ ] Read team data 
- - [ ] Add users to teams
- - [ ] Join a team
- - [ ] Modify user roles/perms within a team
- - [ ] Remove user(s) from a team
- - [ ] Change team owner
- - [ ] Get categories, mod loaders, game versions, licenses, donation sites, and report types. ("tags")
- - [ ] Support for more branches (ie. staging)
+## Project Roadmap
 
-
+View the project roadmap [here](https://github.com/users/BetaPictoris/projects/4/).
 
 ## API Documentation
 
