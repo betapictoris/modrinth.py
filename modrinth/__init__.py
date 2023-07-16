@@ -8,8 +8,9 @@ Modrinth Python API
 '''
 
 import requests
+from warnings import warn
 
-__version__ = '0.1.3'
+__version__ = '0.1.5'
 
 
 class Users:
@@ -295,11 +296,32 @@ class Versions:
             self.changeLog:     str = rJSON['changelog']
             self.dependencies: list = rJSON['dependencies']
             self.changeLogURL:  str = rJSON['changelog_url']
+        
+        def getFiles(self, hash: str = 'sha1', primary: bool = True, optional: bool = True) -> str:
+            '''
+            Returns the file hashes of the version.
+            '''
+            files = []
+
+            if hash not in ['sha1', 'sha512']:
+                raise ValueError("hash must be either sha1 or sha512")
+            for file in self.files:
+                if file['primary'] and primary:
+                    files.append(file['hashes'][hash])
+                elif not file['primary'] and optional:
+                    files.append(file['hashes'][hash])
+            
+            return files
+
 
         def getPrimaryFile(self, hash: str = 'sha1') -> str:
             '''
             Returns the primary file hash of the version.
+
+            Deprecate: Use getFiles instead, getPrimaryFile may be removed in
+                       a future update.
             '''
+            warn("getPrimaryFile is deprecated, use getFiles instead.")
             if hash not in ['sha1', 'sha512']:
                 raise ValueError("hash must be either sha1 or sha512")
             for file in self.files:
