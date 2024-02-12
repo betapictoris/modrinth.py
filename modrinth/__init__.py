@@ -15,29 +15,7 @@ __version__ = '0.1.5'
 BASE_URL = 'https://api.modrinth.com'
 
 import modrinth.users
-
-class Users:
-    '''
-    User data includes their username, name, email, bio, etc. this class hold functions and objects that relate
-    to authentication and user data.  
-
-    Authentication is done using a GitHub token, in the request header. Modrinth.py will automatically add
-    the token to the request header and Labrinth's documentation says that the token is required for these
-    requests: 
-     - those which create data (such as version creation)
-     - those which modify data (such as editing a project)
-     - those which access private data (such as draft projects and notifications)
-
-    For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
-    '''
-
-    class AuthenticatedUser:
-        def __init__(self, token: str):
-            '''
-            token   ==>  String   ==>  GitHub token
-            '''
-            self.token: str = token
-
+import modrinth.authentication
 
 class Projects:
     class ModrinthProject:
