@@ -12,6 +12,8 @@ from warnings import warn
 
 __version__ = '0.1.5'
 
+BASE_URL = 'https://api.modrinth.com'
+
 
 class Users:
     '''
@@ -33,7 +35,7 @@ class Users:
             user   ==>  String   ==>  Username of user ID
             '''
 
-            url: str = 'https://api.modrinth.com/v2/user/{id}'
+            url: str = BASE_URL = '/v2/user/{id}'
             data: dict = requests.get(url.format(id=user)).json()
             self.url: str = url.format(id=user)
 
@@ -62,7 +64,7 @@ class Projects:
             project   ==>  String   ==>  Project ID or slug   |  Example: 'gravestones' or 'ssUbhMkL'
             '''
 
-            url: str = 'https://api.modrinth.com/v2/project/{id}'
+            url: str = BASE_URL = '/v2/project/{id}'
             data: dict = requests.get(url.format(id=project)).json()
             self.url: str = url.format(id=project)
 
@@ -241,7 +243,7 @@ class Projects:
             if facets != "[]":
                 facetsInURL = f'&facets={facets}'
 
-            url: str = f'https://api.modrinth.com/v2/search?query={query}{facetsInURL}&index={index}&offset={offset}&limit={limit}&filters={filters}'
+            url: str = BASE_URL = f'/v2/search?query={query}{facetsInURL}&index={index}&offset={offset}&limit={limit}&filters={filters}'
             r: requests.Response = requests.get(url)
             rJSON: dict = r.json()
 
@@ -277,7 +279,7 @@ class Versions:
 
             self.project: Projects.ModrinthProject = project
             self.version: str = version
-            self.url: str = f'https://api.modrinth.com/v2/version/{version}'
+            self.url: str = BASE_URL = f'/v2/version/{version}'
 
             r: requests.Response = requests.get(self.url)
             rJSON: dict = r.json()
