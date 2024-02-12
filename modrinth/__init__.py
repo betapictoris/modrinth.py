@@ -14,6 +14,7 @@ __version__ = '0.1.5'
 
 BASE_URL = 'https://api.modrinth.com'
 
+import modrinth.users
 
 class Users:
     '''
@@ -29,25 +30,6 @@ class Users:
 
     For more information, see: https://docs.modrinth.com/api-spec/#section/Authentication
     '''
-    class ModrinthUser:
-        def __init__(self, user: str):
-            '''
-            user   ==>  String   ==>  Username of user ID
-            '''
-
-            url: str = BASE_URL = '/v2/user/{id}'
-            data: dict = requests.get(url.format(id=user)).json()
-            self.url: str = url.format(id=user)
-
-            self.username: str = data['username']
-            self.name: str = data['name']
-            self.email: str = data['email']
-            self.bio: str = data['bio']
-            self.id: str = data['id']
-            self.githubID: int = data['github_id']
-            self.avatarURL: str = data['avatar_url']
-            self.created: str = data['created']
-            self.role: str = data['role']
 
     class AuthenticatedUser:
         def __init__(self, token: str):
@@ -64,7 +46,7 @@ class Projects:
             project   ==>  String   ==>  Project ID or slug   |  Example: 'gravestones' or 'ssUbhMkL'
             '''
 
-            url: str = BASE_URL = '/v2/project/{id}'
+            url: str = BASE_URL + '/v2/project/{id}'
             data: dict = requests.get(url.format(id=project)).json()
             self.url: str = url.format(id=project)
 
@@ -243,7 +225,7 @@ class Projects:
             if facets != "[]":
                 facetsInURL = f'&facets={facets}'
 
-            url: str = BASE_URL = f'/v2/search?query={query}{facetsInURL}&index={index}&offset={offset}&limit={limit}&filters={filters}'
+            url: str = BASE_URL + f'/v2/search?query={query}{facetsInURL}&index={index}&offset={offset}&limit={limit}&filters={filters}'
             r: requests.Response = requests.get(url)
             rJSON: dict = r.json()
 
@@ -279,7 +261,7 @@ class Versions:
 
             self.project: Projects.ModrinthProject = project
             self.version: str = version
-            self.url: str = BASE_URL = f'/v2/version/{version}'
+            self.url: str = BASE_URL + f'/v2/version/{version}'
 
             r: requests.Response = requests.get(self.url)
             rJSON: dict = r.json()
